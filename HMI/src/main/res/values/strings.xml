@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Base -->
+    <string name="app_name_main">DV</string>
+    <string name="app_name_wallpaper_settings">Rajawali Wallpaper Settings</string>
+    <string name="app_name_wallpaper_preview">Rajawali Wallpaper Preview</string>
+    <string name="app_name_wallpaper">Rajawali Wallpaper</string>
+    <!-- Menu -->
+    <string name="menu_action_search">Search</string>
+    <!-- Curves Fragment -->
+    <string name="curves_fragment_text_view_curve_types">Cubic Bezier, Linear Bezier, Quadratic Bezier, Catmull Rom, Compound Curve</string>
+    <!-- Spirals Fragment -->
+    <string name="spirals_fragment_text_view_spiral_types">Logarithmic Spiral, Archimedean Spiral</string>
+    <!-- FBX Fragment -->
+    <string name="fbx_fragment_button_model_by">Model by Sampo Rask</string>
+    <!-- MD2 Fragment -->
+    <string name="md2_fragment_button_salute">Salute</string>
+    <string name="md2_fragment_button_death">Death</string>
+    <string name="md2_fragment_button_walk">Walk</string>
+    <string name="md2_fragment_button_wave">Wave</string>
+    <string name="md2_fragment_button_loop_all">Loop All</string>
+    <!-- Object Picking Fragment -->
+    <!-- Touch Ripples Fragment -->
+    <string name="touch_ripples_fragment_button_touch_me">Touch Me</string>
+    <!-- UIElements Fragment -->
+    <string name="ui_elements_fragment_text_view_halo_dunia">This text is in a TextView.\nThe rajawali outline is in an ImageView\nThe checkbox controls the animation.</string>
+    <string name="ui_elements_animate">Animate Light</string>
+    <string name="ui_elements_outline">DV</string>
+    <!-- Uniform Distribution Fragment -->
+    <!-- Skeletal Animation Blending Fragment -->
+    <string name="skeletal_animation_blending_button_idle">IDLE</string>
+    <string name="skeletal_animation_blending_button_walk">WALK</string>
+    <string name="skeletal_animation_blending_button_arm_stretch">ARM STRETCH</string>
+    <string name="skeletal_animation_blending_button_bend">BEND</string>
+    <!-- Touch and Drag Fragment -->
+    <string name="touch_and_drag_fragment_info">Touch &amp; drag</string>
+    <!-- Meet The Team Fragment -->
+    <!-- Community Fragment -->
+    <!-- GCode Fragment -->
+    <string name="gcode_fragment_by">Model by Terawatt Industries</string>
+    <!-- ExceptionDialog -->
+    <string name="exception_dialog_message_unknown">Internal exception occurred.</string>
+    <!-- ETC2 -->
+    <string name="etc2_compression_png">PNG</string>
+    <string name="etc2_compression_etc1">ETC1</string>
+    <string name="etc2_compression_etc2">ETC2</string>
+
+    <!-- Wallpaper -->
+    <!-- Name in Live Wallpaper Picker list -->
+    <string name="lwp_name">Rajawali LWP Example</string>
+
+    <!-- Description in Live Wallpaper Picker list -->
+    <string name="lwp_desc">Example wallpaper that uses Rajawali, an open-source OpenGL ES 2.x/3.x engine for Android.</string>
+
+    <!-- Author -->
+    <string name="lwp_author">Rajawali Contributors</string>
+
+    <!-- Quick little message displayed when the Live Wallpaper Picker is opened -->
+    <!-- The message text is the prefix, lwp_name, and suffix concatenated -->
+    <string name="picker_toast_prefix">Choose \"</string>
+    <string name="picker_toast_suffix">\" from the list of live wallpapers</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="renderer_category">Wallpaper Renderer</string>
+    <string name="renderer_picker_title">Renderer</string>
+    <string name="renderer_picker_summary">Choose the renderer class to use for the wallpaper demo.</string>
+    <string name="touch_a_monkey">Touch a monkey :)</string>
+    <string name="add_cube">Add Cube</string>
+    <string name="remove_cube">Remove Random Cube</string>
+    <string name="fxaa_fragment_button_disable_fxaa">Disable FXAA</string>
+    <string name="fxaa_fragment_button_enable_fxaa">Enable FXAA</string>
+    <string name="system" tools:ignore="ExtraTranslation">System</string>
+
+
+</resources>

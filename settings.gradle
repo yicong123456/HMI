@@ -1,1 +1,8 @@
 include ':rajawali'
+include ':HMI'
+//include ':vuforia'
+include ':wear'
+include ':wear-example'
+include ':vr'
+
+
