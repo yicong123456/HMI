@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="category_general">General</string>
+    <string name="category_general">Render</string>
     <string name="category_lights">Lights</string>
     <string name="category_interactive">Interactive</string>
     <string name="category_ui">UI</string>

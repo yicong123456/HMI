@@ -54,6 +54,7 @@ public abstract class AExampleFragment extends Fragment implements IDisplay {
         return mLayout;
     }
 
+
     protected void onBeforeApplyRenderer() {
     }
 

@@ -48,7 +48,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
             mCubeBox = new Cube(1);
             mCubeBox.setMaterial(material);
             mCubeBox.setColor(0xff990000);
-            mCubeBox.setPosition(-1, -3, 0);
+            mCubeBox.setPosition(-1, -1, 0);
             mCubeBox.setShowBoundingVolume(true);
             getCurrentScene().addChild(mCubeBox);
 
@@ -87,7 +87,7 @@ public class CollisionDetectionFragment extends AExampleFragment {
             anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
             anim.setTransformable3D(mCubeBox);
             getCurrentScene().registerAnimation(anim);
-            anim.play();
+            // anim.play();
 
             Vector3 axis = new Vector3(2, 1, 4);
             axis.normalize();
@@ -97,28 +97,28 @@ public class CollisionDetectionFragment extends AExampleFragment {
             anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
             anim.setTransformable3D(mCubeBox);
             getCurrentScene().registerAnimation(anim);
-            anim.play();
+            // anim.play();
 
             anim = new TranslateAnimation3D(new Vector3(-1, -3, 0));
             anim.setDurationMilliseconds(4000);
             anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
             anim.setTransformable3D(mBoxesBox);
             getCurrentScene().registerAnimation(anim);
-            anim.play();
+            // anim.play();
 
             anim = new TranslateAnimation3D(new Vector3(1, 2, 0));
             anim.setDurationMilliseconds(2000);
             anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
             anim.setTransformable3D(mCubeSphere);
             getCurrentScene().registerAnimation(anim);
-            anim.play();
+            // anim.play();
 
             anim = new TranslateAnimation3D(new Vector3(1, -2, 0));
             anim.setDurationMilliseconds(2000);
             anim.setRepeatMode(Animation.RepeatMode.REVERSE_INFINITE);
             anim.setTransformable3D(mBoxesSphere);
             getCurrentScene().registerAnimation(anim);
-            anim.play();
+            // anim.play();
         }
 
         @Override
