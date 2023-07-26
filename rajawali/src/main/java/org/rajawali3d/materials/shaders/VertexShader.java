@@ -14,6 +14,8 @@ package org.rajawali3d.materials.shaders;
 
 import android.graphics.Color;
 import android.opengl.GLES20;
+import android.util.Log;
+
 import org.rajawali3d.lights.ALight;
 import org.rajawali3d.materials.Material.PluginInsertLocation;
 import org.rajawali3d.materials.plugins.SkeletalAnimationMaterialPlugin.SkeletalAnimationShaderVar;
@@ -188,6 +190,9 @@ public class VertexShader extends AShader {
     @Override
     public void applyParams() {
         super.applyParams();
+        for(int i = 0; i < mColor.length; ++i) {
+            // Log.i("vsp" + String.valueOf(i), String.valueOf(mColor[i]));
+        }
         GLES20.glUniform4fv(muColorHandle, 1, mColor, 0);
         GLES20.glUniform1f(muTimeHandle, mTime);
     }
@@ -283,6 +288,7 @@ public class VertexShader extends AShader {
     }
 
     public void setColor(int color) {
+        Log.i("set triggered0: ", String.valueOf(color));
         mColor[0] = (float) Color.red(color) / 255.f;
         mColor[1] = (float) Color.green(color) / 255.f;
         mColor[2] = (float) Color.blue(color) / 255.f;

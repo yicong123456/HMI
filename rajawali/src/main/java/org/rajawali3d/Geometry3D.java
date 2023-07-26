@@ -14,6 +14,8 @@ package org.rajawali3d;
 
 import android.graphics.Color;
 import android.opengl.GLES20;
+import android.util.Log;
+
 import org.rajawali3d.bounds.BoundingBox;
 import org.rajawali3d.bounds.BoundingSphere;
 import org.rajawali3d.math.vector.Vector3;
@@ -353,6 +355,9 @@ public class Geometry3D {
      */
     public void setData(BufferInfo vertexBufferInfo, BufferInfo normalBufferInfo,
                         float[] textureCoords, float[] colors, int[] indices, boolean createVBOs) {
+        for(int i = 0; i < colors.length; ++i) {
+            Log.i("geo3d" + String.valueOf(i), String.valueOf(colors[i]));
+        }
         if (textureCoords == null || textureCoords.length == 0) {
             textureCoords = new float[(mNumVertices / 3) * 2];
         }

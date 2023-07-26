@@ -14,6 +14,8 @@ package org.rajawali3d;
 
 import android.graphics.Color;
 import android.opengl.GLES20;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import org.rajawali3d.bounds.BoundingBox;
 import org.rajawali3d.bounds.IBoundingVolume;
@@ -99,15 +101,28 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
 
     public Object3D() {
         super();
+        Log.i("first: ", "103");
         mChildren = Collections.synchronizedList(new CopyOnWriteArrayList<Object3D>());
         mGeometry = new Geometry3D();
-        mColor = new float[]{ 0, 1, 0, 1.0f };
+        mColor = new float[]{ 0, 1, 0, 0.0f };   // 调试后改回　new float[]{0, 1, 0, 1.0f}
         mPickingColor = new float[4];
         setPickingColor(UNPICKABLE);
     }
 
+    // public Object3D(int red, int green, int blue) {
+    //     super();
+    //     Log.i("snd: ", "114");
+    //     mChildren = Collections.synchronizedList(new CopyOnWriteArrayList<Object3D>());
+    //     mGeometry = new Geometry3D();
+    //     // mColor = new float[]{ 0, 1, 0, 1.0f };
+    //     mPickingColor = new float[4];
+    //     mPickingColor[RED] =  Color.red(red) / 255f;
+    //     mPickingColor[GREEN] = Color.green(green) / 255f;
+    //     mPickingColor[BLUE] = Color.blue(blue) / 255f;
+    // }
     public Object3D(String name) {
         this();
+        Log.i("thrd: ", "126");
         mName = name;
     }
 
@@ -123,6 +138,9 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
      */
     public void setData(BufferInfo vertexBufferInfo, BufferInfo normalBufferInfo, float[] textureCoords,
                         float[] colors, int[] indices, boolean createVBOs) {
+        for(int i = 0; i < colors.length; ++i) {
+            Log.i("o3" + String.valueOf(i), String.valueOf(colors[i]));
+        }
         mGeometry.setData(vertexBufferInfo, normalBufferInfo, textureCoords, colors, indices, createVBOs);
         mIsContainerOnly = false;
         mElementsBufferType = GLES20.GL_UNSIGNED_INT;
@@ -171,6 +189,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
      */
     public void render(Camera camera, final Matrix4 vpMatrix, final Matrix4 projMatrix,
                        final Matrix4 vMatrix, Material sceneMaterial) {
+        // Log.i("material to render 192", String.valueOf(sceneMaterial));
         render(camera, vpMatrix, projMatrix, vMatrix, null, sceneMaterial);
     }
 
@@ -189,6 +208,9 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
         if (isDestroyed() || (!mIsVisible && !mRenderChildrenAsBatch) || isZeroScale()) {
             return;
         }
+        // Log.i("material to render: ", String.valueOf(sceneMaterial));
+        // Log.i("mMaterial is: ", String.valueOf(mMaterial));
+        // GLES20.glClearColor(0, 0, 0, 1);
 
         if (parentMatrix != null) {
             if (mParentMatrix == null) {
@@ -290,6 +312,9 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
             }
             material.setCurrentObject(this);
             if (mOverrideMaterialColor) {
+//                for(int i = 0; i < mColor.length; ++i) {
+//                    Log.i(String.valueOf(i), String.valueOf(mColor[i]));
+//                }
                 material.setColor(mColor);
             }
             material.applyParams();
@@ -752,6 +777,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
     }
 
     public void setMaterial(Material material) {
+        // Log.i("material is: ", String.valueOf(material));
         if (material == null) {
             return;
         }
@@ -828,18 +854,28 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
     }
 
     public void setColor(int color) {
+        // Log.i("color in Obj3d is: ", String.valueOf(color));
+        // Log.i("color in Obj3d is: ", String.valueOf(color == 0));
+        // color = color < 0 ? -1 * (color+1) : color;
+        // color = 0xFFFFFFFF;
+//         if(color != 0) {
+//            color = 0xFFFFFFFF;
+//         }
         mColor[RED] = Color.red(color) / 255.f;
         mColor[GREEN] = Color.green(color) / 255.f;
         mColor[BLUE] = Color.blue(color) / 255.f;
-        mColor[ALPHA] = Color.alpha(color) / 255.f;
+        mColor[ALPHA] = 0.0f; //mColor[ALPHA] = Color.alpha(color) / 255.f;
         mOverrideMaterialColor = true;
     }
 
     public void setColor(Vector3 color) {
+        Log.i("color Object3D: ", String.valueOf(color));
         setColor(Color.rgb((int) (color.x * 255), (int) (color.y * 255), (int) (color.z * 255)));
     }
 
     public void setPickingColor(int colorIndex) {
+        // colorIndex = 1;
+        // Log.i("colorIndex Object3D: ", String.valueOf(colorIndex));
         mPickingIndex = colorIndex;
         mPickingColor[RED] = Color.red(colorIndex) / 255f;
         mPickingColor[GREEN] = Color.green(colorIndex) / 255f;

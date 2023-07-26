@@ -14,6 +14,8 @@ package org.rajawali3d.materials;
 
 import android.graphics.Color;
 import android.opengl.GLES20;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import org.rajawali3d.BufferInfo;
@@ -336,7 +338,7 @@ public class Material {
         mColor[0] = (float) Color.red(color) / 255.f;
         mColor[1] = (float) Color.green(color) / 255.f;
         mColor[2] = (float) Color.blue(color) / 255.f;
-        mColor[3] = (float) Color.alpha(color) / 255.f;
+        mColor[3] = 0.0f;// (float) Color.alpha(color) / 255.f;
         if (mVertexShader != null)
             mVertexShader.setColor(mColor);
     }
@@ -350,12 +352,16 @@ public class Material {
      *              the red, green, blue and alpha channels.
      */
     public void setColor(float[] color) {
-        mColor[0] = color[0];
-        mColor[1] = color[1];
-        mColor[2] = color[2];
-        mColor[3] = color[3];
-        if (mVertexShader != null)
-            mVertexShader.setColor(mColor);
+        // Log.i("material vertex sc", String.valueOf(color));
+       mColor[0] = color[0];
+       mColor[1] = color[1];
+       mColor[2] = color[2];
+       mColor[3] = color[3];
+        // Log.i("material: ", "part");
+        
+       if (mVertexShader != null) {
+           mVertexShader.setColor(mColor);
+           }
     }
 
     /**
@@ -842,6 +848,9 @@ public class Material {
      * like time, color, buffer handles, etc.
      */
     public void applyParams() {
+        if(mColor != null && mColor.length > 2) {
+            // mColor[3] = 0.0f;
+        }
         mVertexShader.setColor(mColor);
         mVertexShader.setTime(mTime);
         mVertexShader.applyParams();
