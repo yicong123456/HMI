@@ -12,9 +12,7 @@
  */
 package org.rajawali3d.loader;
 
-import android.os.SystemClock;
 import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 
 import org.rajawali3d.Object3D;
@@ -90,6 +88,10 @@ public class LoaderOBJ extends AMeshLoader {
     protected final String NEW_MATERIAL = "newmtl";
     protected final String DIFFUSE_COLOR = "Kd";
     protected final String DIFFUSE_TEX_MAP = "map_Kd";
+
+	private float x;
+	private float y;
+	private float z;
 
     private boolean mNeedToRenameMtl = true;
     static AtomicInteger mUniqueInstanceId = new AtomicInteger(1000);
@@ -375,6 +377,30 @@ public class LoaderOBJ extends AMeshLoader {
 			mergeGroupsAsObjects(mRootObject.getChildAt(i));
 
 		return this;
+	}
+
+	public void setX(float x) {
+		this.x = x;
+	}
+
+	private float getX() {
+		return this.x;
+	}
+
+	public void setY(float y) {
+		this.y = y;
+	}
+
+	private float getY() {
+		return  this.y;
+	}
+
+	public void setZ(float v) {
+		this.z = z;
+	}
+
+	private float getZ() {
+		return this.z;
 	}
 
 	float[] getCentroid(ArrayList<Integer> vertexIndices, ArrayList<Float> vertices) {

@@ -338,7 +338,8 @@ public class Material {
         mColor[0] = (float) Color.red(color) / 255.f;
         mColor[1] = (float) Color.green(color) / 255.f;
         mColor[2] = (float) Color.blue(color) / 255.f;
-        mColor[3] = 0.0f;// (float) Color.alpha(color) / 255.f;
+        // mColor[3] = 0.0f;// (float) Color.alpha(color) / 255.f;
+        mColor[3] = (float) Color.alpha(color) / 255.f;
         if (mVertexShader != null)
             mVertexShader.setColor(mColor);
     }
@@ -1109,6 +1110,7 @@ public class Material {
      */
     public void setModelMatrix(Matrix4 modelMatrix) {
         mModelMatrix = modelMatrix;//.getFloatValues();
+        // Log.i("vertexbufferinput: ", String.valueOf(mModelMatrix));
         mVertexShader.setModelMatrix(mModelMatrix);
 
         mNormalMatrix.setAll(modelMatrix);

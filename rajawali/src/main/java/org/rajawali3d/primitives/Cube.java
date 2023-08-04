@@ -186,12 +186,12 @@ public class Cube extends Object3D {
 				16, 17, 18, 16, 18, 19,
 				20, 21, 22, 20, 22, 23
 		};
-        Log.i("render vertices: ", String.valueOf(vertices));
-		Log.i("render normals: ", String.valueOf(normals));
-		Log.i("render textureCoords: ", String.valueOf(textureCoords));
-		Log.i("render colors: ", String.valueOf(colors));
-		Log.i("render indices: ", String.valueOf(indices));
-		Log.i("render createVBOs: ", String.valueOf(createVBOs));
+        // Log.i("render vertices: ", String.valueOf(vertices));
+		// Log.i("render normals: ", String.valueOf(normals));
+		// Log.i("render textureCoords: ", String.valueOf(textureCoords));
+		// Log.i("render colors: ", String.valueOf(colors));
+		// Log.i("render indices: ", String.valueOf(indices));
+		// Log.i("render createVBOs: ", String.valueOf(createVBOs));
 		setData(vertices, normals, mIsSkybox || mHasCubemapTexture ? skyboxTextureCoords : textureCoords, colors, indices, createVBOs);
 
         if(mIsSkybox) setDoubleSided(true);

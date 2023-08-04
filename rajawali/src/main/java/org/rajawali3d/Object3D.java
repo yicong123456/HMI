@@ -53,6 +53,9 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
 
     protected final Matrix4 mMVPMatrix = new Matrix4();
 
+    private Matrix4 curVPMatrix = new Matrix4();
+
+
     protected final Matrix4 mMVMatrix          = new Matrix4();
     protected final Matrix4 mInverseViewMatrix = new Matrix4();
     protected Matrix4 mPMatrix;
@@ -122,7 +125,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
     // }
     public Object3D(String name) {
         this();
-        Log.i("thrd: ", "126");
+        // Log.i("thrd: ", "126");
         mName = name;
     }
 
@@ -190,6 +193,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
     public void render(Camera camera, final Matrix4 vpMatrix, final Matrix4 projMatrix,
                        final Matrix4 vMatrix, Material sceneMaterial) {
         // Log.i("material to render 192", String.valueOf(sceneMaterial));
+        curVPMatrix = vpMatrix;
         render(camera, vpMatrix, projMatrix, vMatrix, null, sceneMaterial);
     }
 
@@ -205,9 +209,11 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
      */
     public void render(Camera camera, final Matrix4 vpMatrix, final Matrix4 projMatrix, final Matrix4 vMatrix,
                        final Matrix4 parentMatrix, Material sceneMaterial) {
+        // Log.i("material to render 212", String.valueOf(sceneMaterial));
         if (isDestroyed() || (!mIsVisible && !mRenderChildrenAsBatch) || isZeroScale()) {
             return;
         }
+        curVPMatrix = vpMatrix;
         // Log.i("material to render: ", String.valueOf(sceneMaterial));
         // Log.i("mMaterial is: ", String.valueOf(mMaterial));
         // GLES20.glClearColor(0, 0, 0, 1);
@@ -230,6 +236,9 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
         mInverseViewMatrix.setAll(vMatrix).inverse().transpose();
         //Create MVP Matrix from View-Projection Matrix
         mMVPMatrix.setAll(vpMatrix).multiply(mMMatrix);
+        // Log.i("mMVPMatrix in render: ", String.valueOf(mMVMatrix));
+        double[] cur = mMVPMatrix.getM();
+        // Log.i("mvp matrix value: ", String.valueOf(cur));
 
         // Transform the bounding volumes if they exist
         if (mGeometry.hasBoundingBox()) {
@@ -322,6 +331,29 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
             GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, 0);
 
             material.setMVPMatrix(mMVPMatrix);
+            float angleInRadians = (float) Math.toRadians(180);
+            double[] rotateMatrix = new double[16];
+            Matrix.setIdentityM(rotateMatrix, 0);
+            Matrix.rotateM(rotateMatrix, 0, (float) Math.toDegrees(angleInRadians), 0, 1, 0);
+            double[] tempMatrix = new double[16];
+            Matrix.multiplyMM(tempMatrix, 0, mMMatrix.getM(), 0, rotateMatrix, 0);
+            // Log.i("tempMatrix is: ", String.valueOf(tempMatrix));
+            // mMMatrix.setM(tempMatrix);
+            // System.arraycopy(tempMatrix, 0, mMMatrix, 0, 16);
+
+//            Log.i("mMMatrix in obj3d", String.valueOf(mMMatrix));
+//            float angleInRadians = (float) Math.PI;
+//
+//// 构建绕Y轴旋转180度的旋转矩阵
+//            double[] rotationMatrix = new double[16];
+//            Matrix.setIdentityM(rotationMatrix, 0);
+//            Matrix.rotateM(rotationMatrix, 0, (float) Math.toDegrees(angleInRadians), 0, 1, 0);
+//
+//            double[] tempMatrix = new double[16];
+//             Matrix.multiplyMM(tempMatrix, 0, mMMatrix.getM(), 0, rotationMatrix, 0);
+//             System.arraycopy(tempMatrix, 0, mMMatrix, 0, 16);
+//             Log.i("after rotate: ", String.valueOf(mMMatrix) );
+
             material.setModelMatrix(mMMatrix);
             material.setInverseViewMatrix(mInverseViewMatrix);
             material.setModelViewMatrix(mMVMatrix);
@@ -377,6 +409,28 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
         if (mRenderChildrenAsBatch && sceneMaterial == null) {
             material.unbindTextures();
         }
+    }
+
+    public void setMMatrix() {
+//        for(int i = 0; i < mMMatrix.length; ++i) {
+//
+//        }
+        // Log.i("mMMatrix is:　。。。。 ", String.valueOf(mMMatrix));
+        Vector3 a = new Vector3(0, 1.0f, 0);
+        // Log.i("lengthL: ", String.valueOf(mMMatrix.rotate(a, 180.f)));
+        mMMatrix.rotate(a, 90.0f);
+        // Log.i("389: ", String.valueOf(mMMatrix));
+        mMVPMatrix.setAll(curVPMatrix).multiply(mMMatrix);
+        // Log.i("mvp matrix is: ", String.valueOf(mMVMatrix));
+        // mMMatrix[0] = -1;
+//        // Matrix.setRotateM(mMMatrix,0,180,1,1,1);
+//        double[] rotationMatrix = new double[16];
+//        float angle = (float) Math.PI;
+//        Matrix.setRotateM(rotationMatrix, 0, (float)Math.toDegrees(angle), 0, 1, 0);
+//        double[] tempMatrix = new double[16];
+//        Matrix.multiplyMM(tempMatrix, 0, mMMatrix, 0, rotationMatrix, 0);
+//        System.arraycopy(tempMatrix, 0, mMMatrix, 0, 16);
+//        Log.i("mMMatrix after totate: ", String.valueOf(mMMatrix));
     }
 
     /**

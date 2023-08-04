@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="category_general">Render</string>
+
+    <string name="example_general_colored_lines">Colored Lines</string>
+
+</resources>

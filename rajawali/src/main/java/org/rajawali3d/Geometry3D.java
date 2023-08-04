@@ -1037,6 +1037,7 @@ public class Geometry3D {
     }
 
     public BufferInfo getIndexBufferInfo() {
+        // Log.i("buffer info: ", String.valueOf(mBuffers.get(INDEX_BUFFER_KEY)));
         return mBuffers.get(INDEX_BUFFER_KEY);
     }
 

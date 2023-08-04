@@ -1,6 +1,8 @@
 include ':rajawali'
-include ':examples'
+include ':ODI'
 //include ':vuforia'
 include ':wear'
 include ':wear-example'
 include ':vr'
+
+

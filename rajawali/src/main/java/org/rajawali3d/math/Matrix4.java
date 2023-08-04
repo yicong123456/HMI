@@ -1299,4 +1299,31 @@ public final class Matrix4 implements Cloneable {
                + m[M30] + "|" + m[M31] + "|" + m[M32] + "|" + m[M33] + "]\n";
                // @formatter:on
     }
+
+    public void setM(double[] modelMatrix) {
+        m = modelMatrix;
+        return;
+    }
+
+    public double[] getM() {
+        double[] res = new double[16];
+        res[0] = m[M00];
+        res[1] = m[M01];
+        res[2] = m[M02];
+        res[3] = m[M03];
+        res[4] = m[M10];
+        res[5] = m[M11];
+        res[6] = m[M12];
+        res[7] = m[M13];
+        res[8] = m[M20];
+        res[9] = m[M21];
+        res[10] = m[M22];
+        res[11] = m[M23];
+        res[12] = m[M30];
+        res[13] = m[M31];
+        res[14] = m[M32];
+        res[15] = m[M33];
+
+        return res;
+    }
 }

@@ -15,6 +15,8 @@ package org.rajawali3d.scene;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.opengl.GLES20;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import org.rajawali3d.cameras.Camera;
@@ -474,6 +476,7 @@ public class Scene {
 	 * @return True if the child was successfully queued for addition.
 	 */
 	public boolean addChild(final Object3D child) {
+		//  Log.i("add child in scene", String.valueOf(child.getGeometry()));
         final AFrameTask task = new AFrameTask() {
             @Override
             protected void doTask() {
@@ -1491,6 +1494,7 @@ public class Scene {
 
 	private void addShadowMapMaterialPlugin(Object3D o, ShadowMapMaterialPlugin materialPlugin) {
 		Material m = o.getMaterial();
+		// Log.i("1497, ", String.valueOf(m));
 
 		if(m != null && m.lightingEnabled()) {
 			if(materialPlugin != null) {
