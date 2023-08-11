@@ -1,5 +1,5 @@
 include ':rajawali'
-include ':ODI'
+include ':HMI'
 //include ':vuforia'
 include ':wear'
 include ':wear-example'
