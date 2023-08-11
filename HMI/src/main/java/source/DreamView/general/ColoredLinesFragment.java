@@ -113,7 +113,6 @@ public class ColoredLinesFragment extends AExampleFragment implements
 		LinearLayout ll = new LinearLayout(getActivity());
 		ll.setOrientation(LinearLayout.VERTICAL);
 		ll.setGravity(Gravity.BOTTOM);
-
 		mSeekBarZ = new SeekBar(getActivity());
 		mSeekBarZ.setMax(100);
 		mSeekBarZ.setProgress(100);
