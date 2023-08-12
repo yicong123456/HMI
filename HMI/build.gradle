@@ -55,7 +55,6 @@ dependencies {
 
     implementation project(':rajawali')
 
-    wearApp project(':wear-example')
 
     androidTestImplementation "androidx.test.ext:junit-ktx:1.1.5"
     androidTestUtil "androidx.test.services:test-services:1.4.2"

@@ -337,7 +337,7 @@ public class ColoredLinesFragment extends AExampleFragment implements
 			int index = 0;
 			for(Point point:  routeData) {
 				colors[index] = argb(255,1.0f, 1.0f, 1.0f);
-				mainLineColors[index] = argb(255, 0.5f, 0.0f, 0.5f);
+				mainLineColors[index] = argb(255, 1.0f, 0.0f, 0.5f);
 				restColors[index++] = argb(255,1.0f, 1.0f, 1.0f);
 				Vector3 v = new Vector3();
 				Vector3 v2 = new Vector3();
@@ -391,7 +391,9 @@ public class ColoredLinesFragment extends AExampleFragment implements
 			this.loadCarModel(mContext, mTextureManager, R.raw.untitled_quardfaced, 0.64f, -0.15f, -54.5f);
 			// this.putVehicle(0.8f, Color.GREEN, 3.4f, -6.0f, 0.5f);
 			// this.putVehicle(0.8f, Color.GREEN, 1.3f, -18.0f, 0.5f);
-			// this.putVehicle(0.8f, Color.GREEN, -2.85f, -34.5f, 0.5f);
+			this.putVehicle(1.6f, Color.RED, 1.52f, -12.0f, 0.3f);
+			this.putVehicle(1.6f, Color.BLUE, -4.02f, -32.0f, 0.3f);
+			this.putVehicle(2.2f, Color.BLUE, 0.64f, -52.5f, 0.3f);
 		}
 
 		@Override

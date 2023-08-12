@@ -2,7 +2,7 @@ package org.rajawali3d.cameras;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.view.GestureDetectorCompat;
+// import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -12,6 +12,7 @@ import androidx.annotation.FloatRange;
 
 import org.rajawali3d.Object3D;
 import org.rajawali3d.math.MathUtil;
+import org.rajawali3d.math.Matrix4;
 import org.rajawali3d.math.Quaternion;
 import org.rajawali3d.math.vector.Vector2;
 import org.rajawali3d.math.vector.Vector3;
@@ -25,7 +26,7 @@ public class ArcballCamera extends Camera {
     private Context mContext;
     private ScaleGestureDetector mScaleDetector;
     private View.OnTouchListener mGestureListener;
-    private GestureDetectorCompat mDetector;
+    // private GestureDetectorCompat mDetector;
     private View mView;
     protected boolean mIsRotating;
     private boolean mIsScaling;
@@ -74,12 +75,12 @@ public class ArcballCamera extends Camera {
     }
 
     public void setRadius(float radius) {
-        mRadius = radius;
+        // mRadius = radius;
     }
 
     @Override
     public void setProjectionMatrix(int width, int height) {
-        mSphereRadius = Math.min(width * 0.5f, height * 0.5f);
+        // mSphereRadius = Math.min(width * 0.5f, height * 0.5f);
         super.setProjectionMatrix(width, height);
     }
 
@@ -191,7 +192,7 @@ public class ArcballCamera extends Camera {
         ((Activity) mContext).runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mDetector = new GestureDetectorCompat(mContext, new GestureListener());
+                // mDetector = new GestureDetectorCompat(mContext, new GestureListener());
                 mScaleDetector = new ScaleGestureDetector(mContext, new ScaleListener());
 
                 mGestureListener = new View.OnTouchListener() {
@@ -199,7 +200,7 @@ public class ArcballCamera extends Camera {
                         mScaleDetector.onTouchEvent(event);
 
                         if (!mIsScaling) {
-                            mDetector.onTouchEvent(event);
+                            // mDetector.onTouchEvent(event);
 
                             if (event.getAction() == MotionEvent.ACTION_UP) {
                                 if (mIsRotating) {
