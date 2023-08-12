@@ -59,8 +59,8 @@ public class VideoTextureFragment extends AExampleFragment {
 				e.printStackTrace();
 			}
 
-			mMediaPlayer = MediaPlayer.create(getContext(),
-											  R.raw.sintel_trailer_480p);
+//			mMediaPlayer = MediaPlayer.create(getContext(),
+//											  R.raw.sintel_trailer_480p);
 			mMediaPlayer.setLooping(true);
 
 			mVideoTexture = new StreamingTexture("sintelTrailer", mMediaPlayer);
