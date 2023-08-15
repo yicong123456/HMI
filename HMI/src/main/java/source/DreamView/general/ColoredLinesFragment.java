@@ -272,20 +272,20 @@ public class ColoredLinesFragment extends AExampleFragment implements
 			getCurrentScene().addChild(line2);
 		}
 
-		public Object3D getGeneralCar() {
-			LoaderOBJ parser = new LoaderOBJ(mContext.getResources(), mTextureManager, R.raw.benz580);
-			Object3D curCarResGeneral = null;
-			try {
-				parser.parse();
-				curCarResGeneral = parser.getParsedObject();
-				curCarResGeneral.setScale(0.2);
-				Log.i("car res 289 is: ", String.valueOf(curCarResGeneral));
-				Log.i("car res 290 init data: ", String.valueOf(curCarResGeneral.getGeometry()));
-			} catch (ParsingException e) {
-				e.printStackTrace();
-			}
-			return curCarResGeneral;
-		}
+		// public Object3D getGeneralCar() {
+		// 	LoaderOBJ parser = new LoaderOBJ(mContext.getResources(), mTextureManager, R.raw.benz580);
+		// 	Object3D curCarResGeneral = null;
+		// 	try {
+		// 		parser.parse();
+		// 		curCarResGeneral = parser.getParsedObject();
+		// 		curCarResGeneral.setScale(0.2);
+		// 		Log.i("car res 289 is: ", String.valueOf(curCarResGeneral));
+		// 		Log.i("car res 290 init data: ", String.valueOf(curCarResGeneral.getGeometry()));
+		// 	} catch (ParsingException e) {
+		// 		e.printStackTrace();
+		// 	}
+		// 	return curCarResGeneral;
+		// }
 
 		public void putOtherCar(float x, float y, float z) {
 
@@ -333,12 +333,16 @@ public class ColoredLinesFragment extends AExampleFragment implements
 
 			int[] colors = new int[this.routeData.size()];
 			int[] restColors = new int[this.routeData.size()];
+//			 int[] noneCarColors = new int[this.routeData.size()];
+//			 int[] restCarColors = new int[this.routeData.size()];
 			int[] mainLineColors = new int[this.routeData.size()];
 			int index = 0;
 			for(Point point:  routeData) {
 				colors[index] = argb(255,1.0f, 1.0f, 1.0f);
-				mainLineColors[index] = argb(255, 0.5f, 0.0f, 0.5f);
+				mainLineColors[index] = argb(255, 1.0f, 0.0f, 0.5f);
 				restColors[index++] = argb(255,1.0f, 1.0f, 1.0f);
+//				 restCarColors[index++] = argb(255, 1.0f, 1.0f, 0.0f);
+//				 noneCarColors[index++] = argb(255, 0.0f, 0.0f, 1.0f);
 				Vector3 v = new Vector3();
 				Vector3 v2 = new Vector3();
 				v.x = point.getY();
@@ -384,14 +388,18 @@ public class ColoredLinesFragment extends AExampleFragment implements
 			Stack<Vector3> mainLinePos = this.getRoadLine(0.80f);
 			this.generateLine(mainLinePos, mainLineColors);
 
+			// this.generateLine(linePos2, noneCarColors);
+
 
 			this.loadCarModel(mContext, mTextureManager, R.raw.untitled_quardfaced, 0.64f, 0.14f, -2.5f);
 			this.loadCarModel(mContext, mTextureManager, R.raw.benz580, 2.52f, -0.15f, -16.0f);
 			this.loadCarModel(mContext, mTextureManager, R.raw.benz580, -2.85f, -0.15f, -34.5f);
-			this.loadCarModel(mContext, mTextureManager, R.raw.untitled_quardfaced, 0.64f, -0.15f, -54.5f);
+//			this.loadCarModel(mContext, mTextureManager, R.raw.untitled_quardfaced, 0.64f, -0.15f, -54.5f);
 			// this.putVehicle(0.8f, Color.GREEN, 3.4f, -6.0f, 0.5f);
 			// this.putVehicle(0.8f, Color.GREEN, 1.3f, -18.0f, 0.5f);
-			// this.putVehicle(0.8f, Color.GREEN, -2.85f, -34.5f, 0.5f);
+			this.putVehicle(1.6f, Color.RED, 1.52f, -12.0f, 0.3f);
+			this.putVehicle(1.6f, Color.BLUE, -4.02f, -32.0f, 0.3f);
+//			this.putVehicle(2.2f, Color.BLUE, 0.64f, -52.5f, 0.3f);
 		}
 
 		@Override
